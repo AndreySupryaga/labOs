@@ -13,6 +13,11 @@
                     <ng-container *ngSwitchCase="!!col.formatValue">
                         {{col.formatValue(element)}}
                     </ng-container>
+<!--                    TODO: Move to const-->
+                    <ng-container *ngSwitchCase="col.id === 'favorite'">
+                        <mat-icon>star</mat-icon>
+                        <mat-icon>star_outline</mat-icon>
+                    </ng-container>
                     <ng-container *ngSwitchDefault>{{element[col.id]}}</ng-container>
                 </ng-container>
             </td>
