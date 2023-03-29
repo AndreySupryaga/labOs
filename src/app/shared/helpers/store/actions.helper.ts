@@ -15,4 +15,3 @@ export const getApiActionsForGivenModule = (moduleName: string) => <T1 extends P
 	succeeded: createAction(getActionDescription(moduleName, `${action} request was succeeded`), succeedActionProps),
 	failed: createAction(getActionDescription(moduleName, `${action} request failed`), failedActionProps),
 });
-
