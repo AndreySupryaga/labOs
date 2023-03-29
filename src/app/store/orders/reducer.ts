@@ -1,6 +1,6 @@
 import {Action, createReducer, on} from '@ngrx/store';
 import {OrdersActions} from '@store/orders/actions';
-import {Order} from '@entities/orders/order.model';
+import {Order} from '@entities/orders/model';
 import {LoadingStatus} from '@entities/store/interfaces';
 import {STATUS} from '@entities/store/constants';
 import {assoc, pipe} from 'ramda';

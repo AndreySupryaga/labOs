@@ -1,0 +1,17 @@
+@import "sizes";
+
+.table-container {
+  margin: 0 $default-offset-double $default-offset-double;
+  height: 80vh;
+  overflow: auto;
+
+  table {
+    width: 100%;
+    border-radius: $default-offset-half;
+
+    th:not(:first-child), td:not(:first-child) {
+      text-align: center;
+      width: 10%;
+    }
+  }
+}

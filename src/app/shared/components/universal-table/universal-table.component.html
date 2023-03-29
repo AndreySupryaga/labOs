@@ -1,0 +1,15 @@
+<div class="table-container mat-elevation-z8" *ngIf="rows">
+    <table mat-table [dataSource]="rows">
+        <ng-container *ngFor="let col of columns" [matColumnDef]="col.id">
+            <th class="overline-text" mat-header-cell *matHeaderCellDef>{{col.title}}</th>
+            <td mat-cell
+                *matCellDef="let element"
+            >
+                {{element[col.id]}}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

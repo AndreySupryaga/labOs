@@ -6,7 +6,10 @@
                 {{ 'stms.orders.get-orders' | translate }}
             </a>
            <div>
-               <pre>{{orders$ | async | json}}</pre>
+               <st-universal-table
+                       [rows]="orders$ | async"
+                       [columns]="columns"
+               ></st-universal-table>
            </div>
         </div>
     </div>
