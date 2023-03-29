@@ -5,9 +5,14 @@
             <a mat-raised-button class="actions-main" color="primary">
                 {{ 'stms.patients.get-patients' | translate }}
             </a>
-            <!--
-              Endpoint to fetch data: https://api.mocki.io/v2/51597ef3
-             -->
+            <div *ngIf="(loadingStatus$ | async).loading" class="loader-container">
+                <st-loader></st-loader>
+            </div>
+            <st-universal-table
+                    *ngIf="(loadingStatus$ | async).loaded"
+                    [rows]="patients$ | async"
+                    [columns]="columns"
+            ></st-universal-table>
         </div>
     </div>
 </div>

@@ -23,11 +23,11 @@ export class OrdersComponent implements OnInit {
 		this.loadingStatus$ = this.store.select(orderSelectors.orders.loadingStatus);
 	}
 
-	ngOnInit() {
-		this.reloadOrders()
+	ngOnInit(): void {
+		this.reloadData()
 	}
 
-	reloadOrders() {
+	reloadData(): void {
 		this.store.dispatch(OrdersActions.getOrders.requested());
 	}
 }

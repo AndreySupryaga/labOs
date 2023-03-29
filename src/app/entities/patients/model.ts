@@ -1,3 +1,10 @@
+export interface PatientsApiResponse {
+	patient: Patient[]
+	count: number;
+	moreUncountedMatches: boolean;
+	undisplayedMatches: boolean;
+}
+
 export interface Patient {
 	address?: any;
 	addressString?: string;

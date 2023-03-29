@@ -1,3 +1,4 @@
 export enum StoreModules {
-	Orders = 'Orders'
+	Orders = 'Orders',
+	Patients = 'Patients'
 }

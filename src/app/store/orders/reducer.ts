@@ -26,7 +26,6 @@ const reducer = createReducer(
 		pipe(assoc(OrdersStates.OrdersLoadingStatus, STATUS.loading))(state)
 	),
 	on(OrdersActions.getOrders.succeeded, (state, {order}) => {
-		console.log(order);
 		return pipe(
 				assoc(OrdersStates.Orders, order),
 				assoc(OrdersStates.OrdersLoadingStatus, STATUS.loaded)
