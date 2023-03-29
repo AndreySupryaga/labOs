@@ -10,8 +10,8 @@
                 *matCellDef="let element"
             >
                 <ng-container [ngSwitch]="true">
-                    <ng-container *ngSwitchCase="!!col.getValue">
-                        {{col.getValue(element)}}
+                    <ng-container *ngSwitchCase="!!col.formatValue">
+                        {{col.formatValue(element)}}
                     </ng-container>
                     <ng-container *ngSwitchDefault>{{element[col.id]}}</ng-container>
                 </ng-container>

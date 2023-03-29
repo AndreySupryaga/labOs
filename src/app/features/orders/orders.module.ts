@@ -6,10 +6,11 @@ import {OrdersComponent} from './orders/orders.component';
 import {OrdersRoutingModule} from './orders-routing.module';
 import {OrdersStoreFeatureModule} from '@store/orders';
 import {UniversalTableModule} from '@shared/components/universal-table/universal-table.module';
+import {LoaderModule} from '@shared/components/loader/loader.module';
 
 @NgModule({
 	declarations: [OrdersComponent],
-	imports: [CommonModule, SharedModule, OrdersRoutingModule, OrdersStoreFeatureModule, UniversalTableModule]
+	imports: [CommonModule, SharedModule, OrdersRoutingModule, OrdersStoreFeatureModule, UniversalTableModule, LoaderModule]
 })
 export class OrdersModule {
 }

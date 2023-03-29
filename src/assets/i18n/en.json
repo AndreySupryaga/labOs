@@ -30,7 +30,7 @@
   "stms.patients.get-patients": "Get patients",
 
   "stms.orders.title": "Orders",
-  "stms.orders.get-orders": "Get  orders",
+  "stms.orders.reload-orders": "Reload orders",
   "stms.orders.order-name": "Order name",
   "stms.orders.order-status": "Status",
   "stms.orders.order-creator": "Creator",
