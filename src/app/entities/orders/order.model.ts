@@ -1,3 +1,10 @@
+export interface OrderApiResponse {
+	order: Order[]
+	count: number;
+	moreUncountedMatches: boolean;
+	undisplayedMatches: boolean;
+}
+
 export interface Order {
 	code?: number;
 	allRequestsRejected?: boolean;

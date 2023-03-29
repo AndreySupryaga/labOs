@@ -12,7 +12,16 @@
     "module": "esnext",
     "target": "es2015",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2018", "dom"]
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@shared/*": ["app/shared/*"],
+      "@features/*": ["app/features/*"],
+      "@store/*": ["app/store/*"],
+      "@entities/*": ["app/entities/*"],
+      "@core/*": ["app/core/*"],
+      "@api/*": ["app/api/*"],
+      "@angular/*": ["../node_modules/@angular/*"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

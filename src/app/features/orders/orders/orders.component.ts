@@ -1,6 +1,10 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-
-import {ROUTE_ANIMATIONS_ELEMENTS} from '../../../core/core.module';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {OrdersActions} from '@store/orders/actions';
+import {Observable} from 'rxjs';
+import {Order} from '@entities/orders/order.model';
+import {orderSelectors} from '@store/orders/selectors';
+import {LoadingStatus} from '@entities/store/interfaces';
 
 @Component({
 	selector: 'st-orders',
@@ -9,11 +13,15 @@ import {ROUTE_ANIMATIONS_ELEMENTS} from '../../../core/core.module';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrdersComponent implements OnInit {
-	routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+	orders$: Observable<Order[]>;
+	loadingStatus$: Observable<LoadingStatus>;
 
-	constructor() {
+	constructor(private store: Store) {
+		this.orders$ = this.store.select(orderSelectors.orders.data)
+		this.loadingStatus$ = this.store.select(orderSelectors.orders.loadingStatus);
 	}
 
 	ngOnInit() {
+		this.store.dispatch(OrdersActions.getOrders.requested());
 	}
 }
