@@ -28,6 +28,11 @@
 
   "stms.patients.title": "Patients",
   "stms.patients.get-patients": "Get patients",
+  "stms.patients.name": "Name",
+  "stms.patients.gender": "Gender",
+  "stms.patients.id": "Id",
+  "stms.patients.age": "Age",
+  "stms.patients.phone": "Phone",
 
   "stms.orders.title": "Orders",
   "stms.orders.reload-orders": "Reload orders",
@@ -36,5 +41,6 @@
   "stms.orders.order-creator": "Creator",
   "stms.orders.order-patient": "Patient",
   "stms.orders.creation-date": "Creation Date",
-  "stms.orders.favorite": "Favorite"
+  "stms.orders.favorite": "Favorite",
+  "stms.patients.favorite": "Favorite"
 }

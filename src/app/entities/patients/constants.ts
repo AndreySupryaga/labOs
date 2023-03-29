@@ -4,40 +4,42 @@ import {Patient} from '@entities/patients/model';
 export const PATIENT_TABLE_COLUMNS: TableColumn<Patient>[] = [
 	{
 		id: 'favorite',
-		title: 'stms.orders.favorite',
+		title: 'stms.patients.favorite',
 		width: 1
 	},
 	{
-		id: 'orderName',
-		title: 'stms.orders.order-name',
+		id: 'fullName',
+		title: 'stms.patients.name',
 	},
 	{
-		id: 'creationDate',
-		title: 'stms.orders.creation-date',
+		id: 'birthDate',
+		title: 'stms.patients.age',
 		formatValue(row: Patient): string {
-			return `${row[this.id]?.formattedDate} ${row[this.id]?.formattedTime}`;
+			if (!row[this.id]?.formattedDate) {
+				return '';
+			}
+			const dob = new Date(row[this.id]?.formattedDate).getTime();
+			const dateToCompare = new Date().getTime();
+			const age = (dateToCompare - dob) / (365 * 24 * 60 * 60 * 1000);
+			return `${Math.floor(age)}`;
 		}
 	},
 	{
-		id: 'creator',
-		title: 'stms.orders.order-creator',
-		formatValue(row: Patient): string {
-			return row[this.id]?.name;
-		}
-	},
-	{
-		id: 'patient',
-		title: 'stms.orders.order-patient',
-		formatValue(row: Patient): string {
-			return row[this.id]?.fullName;
-
-		}
-	},
-	{
-		id: 'status',
-		title: 'stms.orders.order-status',
+		id: 'sex',
+		title: 'stms.patients.gender',
 		formatValue(row: Patient): string {
 			return row[this.id]?.name;
 		}
+	},
+	{
+		id: 'address',
+		title: 'stms.patients.phone',
+		formatValue(row: Patient): string {
+			return row[this.id]?.phone1;
+		}
+	},
+	{
+		id: 'defaultId',
+		title: 'stms.patients.id',
 	},
 ]
