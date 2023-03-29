@@ -24,6 +24,10 @@ export class OrdersComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.reloadOrders()
+	}
+
+	reloadOrders() {
 		this.store.dispatch(OrdersActions.getOrders.requested());
 	}
 }

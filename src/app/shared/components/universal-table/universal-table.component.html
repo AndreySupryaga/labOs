@@ -1,8 +1,12 @@
 <div class="table-container mat-elevation-z8" *ngIf="rows">
     <table mat-table [dataSource]="rows">
         <ng-container *ngFor="let col of columns" [matColumnDef]="col.id">
-            <th class="overline-text" mat-header-cell *matHeaderCellDef>{{col.title}}</th>
+            <th [style.width.%]="col.width"
+                mat-header-cell
+                *matHeaderCellDef
+            >{{col.title | translate}}</th>
             <td mat-cell
+                [style.width.%]="col.width"
                 *matCellDef="let element"
             >
                 {{element[col.id]}}

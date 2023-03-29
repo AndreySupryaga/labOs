@@ -30,5 +30,11 @@
   "stms.patients.get-patients": "Get patients",
 
   "stms.orders.title": "Orders",
-  "stms.orders.get-orders": "Get orders"
+  "stms.orders.get-orders": "Get  orders",
+  "stms.orders.order-name": "Order name",
+  "stms.orders.order-status": "Status",
+  "stms.orders.order-creator": "Creator",
+  "stms.orders.order-patient": "Patient",
+  "stms.orders.creation-date": "Creation Date",
+  "stms.orders.favorite": "Favorite"
 }

@@ -1,13 +1,13 @@
 @import "sizes";
 
 .table-container {
-  margin: 0 $default-offset-double $default-offset-double;
+  margin-top: $default-offset;
   height: 80vh;
   overflow: auto;
+  border-radius: $default-offset-half;
 
   table {
     width: 100%;
-    border-radius: $default-offset-half;
 
     th:not(:first-child), td:not(:first-child) {
       text-align: center;
