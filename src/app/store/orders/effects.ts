@@ -4,7 +4,7 @@ import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {OrdersActions} from '@store/orders/actions';
-import {OrdersApiService} from '@api/orders/add-gender-age.api.service';
+import {OrdersApiService} from '@shared/api/orders/add-gender-age.api.service';
 
 @Injectable()
 export class OrdersEffects {

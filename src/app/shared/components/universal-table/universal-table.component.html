@@ -9,7 +9,12 @@
                 [style.width.%]="col.width"
                 *matCellDef="let element"
             >
-                {{element[col.id]}}
+                <ng-container [ngSwitch]="true">
+                    <ng-container *ngSwitchCase="!!col.getValue">
+                        {{col.getValue(element)}}
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>{{element[col.id]}}</ng-container>
+                </ng-container>
             </td>
         </ng-container>
 

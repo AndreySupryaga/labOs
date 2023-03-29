@@ -1,6 +1,7 @@
 import {TableColumn} from '@entities/universal-table/model';
+import {Order} from '@entities/orders/model';
 
-export const ORDER_TABLE_COLUMNS: TableColumn[] = [
+export const ORDER_TABLE_COLUMNS: TableColumn<Order>[] = [
 	{
 		id: 'favorite',
 		title: 'stms.orders.favorite',
@@ -8,22 +9,35 @@ export const ORDER_TABLE_COLUMNS: TableColumn[] = [
 	},
 	{
 		id: 'orderName',
-		title: 'stms.orders.order-name'
+		title: 'stms.orders.order-name',
 	},
 	{
 		id: 'creationDate',
-		title: 'stms.orders.creation-date'
+		title: 'stms.orders.creation-date',
+		getValue(row: Order): string {
+			return `${row[this.id]?.formattedDate} ${row[this.id]?.formattedTime}`;
+		}
 	},
 	{
 		id: 'creator',
-		title: 'stms.orders.order-creator'
+		title: 'stms.orders.order-creator',
+		getValue(row: Order): string {
+			return row[this.id]?.name;
+		}
 	},
 	{
 		id: 'patient',
-		title: 'stms.orders.order-patient'
+		title: 'stms.orders.order-patient',
+		getValue(row: Order): string {
+			return row[this.id]?.fullName;
+
+		}
 	},
 	{
 		id: 'status',
-		title: 'stms.orders.order-status'
+		title: 'stms.orders.order-status',
+		getValue(row: Order): string {
+			return row[this.id]?.name;
+		}
 	},
 ]

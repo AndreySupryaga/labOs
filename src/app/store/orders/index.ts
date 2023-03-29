@@ -4,7 +4,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreModules} from '@entities/store/store';
 import {ordersReducer} from '@store/orders/reducer';
 import {OrdersEffects} from '@store/orders/effects';
-import {OrdersApiService} from '@api/orders/add-gender-age.api.service';
+import {OrdersApiService} from '@shared/api/orders/add-gender-age.api.service';
 
 @NgModule({
 	declarations: [],

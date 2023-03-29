@@ -19,5 +19,4 @@ export class UniversalTableComponent implements OnChanges {
       this.displayedColumns = this.columns.map(({id}) => id);
     }
   }
-
 }
