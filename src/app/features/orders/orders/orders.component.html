@@ -10,6 +10,7 @@
                         [loadingStatus]="loadingStatus$ | async"
                         [rows]="orders$ | async"
                         [columns]="columns"
+                        (toggleFavorite)="toggleFavorite($event)"
                 ></st-universal-table>
             </div>
         </div>

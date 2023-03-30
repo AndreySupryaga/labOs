@@ -8,22 +8,22 @@ import {assoc, pipe} from 'ramda';
 export enum OrdersStates {
 	Orders = 'Orders',
 	OrdersLoadingStatus = 'OrdersLoadingStatus',
-	OrdersFavorite = 'OrdersFavorite',
-	OrdersFavoriteLoadingStatus = 'OrdersFavoriteLoadingStatus',
+	FavoriteOrders = 'FavoriteOrders',
+	FavoriteOrdersLoadingStatus = 'FavoriteOrdersLoadingStatus',
 }
 
 export interface OrdersState {
 	[OrdersStates.Orders]: Order[];
 	[OrdersStates.OrdersLoadingStatus]: LoadingStatus;
-	[OrdersStates.OrdersFavorite]: Order[];
-	[OrdersStates.OrdersFavoriteLoadingStatus]: LoadingStatus;
+	[OrdersStates.FavoriteOrders]: Order[];
+	[OrdersStates.FavoriteOrdersLoadingStatus]: LoadingStatus;
 }
 
 export const initialOrdersState: OrdersState = {
 	[OrdersStates.Orders]: null,
 	[OrdersStates.OrdersLoadingStatus]: STATUS.default,
-	[OrdersStates.OrdersFavorite]: null,
-	[OrdersStates.OrdersFavoriteLoadingStatus]: STATUS.default,
+	[OrdersStates.FavoriteOrders]: null,
+	[OrdersStates.FavoriteOrdersLoadingStatus]: STATUS.default,
 };
 
 const reducer = createReducer(
@@ -39,14 +39,18 @@ const reducer = createReducer(
 		}
 	),
 	on(OrdersActions.getFavoriteOrders.requested, (state) =>
-		pipe(assoc(OrdersStates.OrdersFavoriteLoadingStatus, STATUS.loading))(state)
+		pipe(assoc(OrdersStates.FavoriteOrdersLoadingStatus, STATUS.loading))(state)
 	),
 	on(OrdersActions.getFavoriteOrders.succeeded, (state, {data}) => {
 		return pipe(
-				assoc(OrdersStates.OrdersFavorite, data),
-				assoc(OrdersStates.OrdersFavoriteLoadingStatus, STATUS.loaded)
+				assoc(OrdersStates.FavoriteOrders, data),
+				assoc(OrdersStates.FavoriteOrdersLoadingStatus, STATUS.loaded)
 			)(state)
 		}
+	),
+
+	on(OrdersActions.updateFavoriteOrders, (state, {data}) =>
+		pipe(assoc(OrdersStates.FavoriteOrders, data))(state)
 	),
 );
 

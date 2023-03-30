@@ -8,19 +8,26 @@ const getState = createFeatureSelector<OrdersState>(StoreModules.Orders);
 const getOrdersData = createSelector(getState, (state: OrdersState) => state[OrdersStates.Orders]);
 const getOrdersLoadingStatus = createSelector(getState, (state: OrdersState) => state[OrdersStates.OrdersLoadingStatus]);
 
-const getOrdersFavoriteData = createSelector(getState, (state: OrdersState) => state[OrdersStates.OrdersFavorite]);
-const getOrdersFavoriteLoadingStatus = createSelector(getState, (state: OrdersState) => state[OrdersStates.OrdersFavoriteLoadingStatus]);
+const getFavoriteOrdersData = createSelector(getState, (state: OrdersState) => state[OrdersStates.FavoriteOrders]);
+const getFavoriteOrdersLoadingStatus = createSelector(getState, (state: OrdersState) => state[OrdersStates.FavoriteOrdersLoadingStatus]);
 
 const getOrdersWithFavoriteData = createSelector(
 	getOrdersData,
-	getOrdersFavoriteData,
-	(orders, ordersFavorite) => {
-		return orders;
+	getFavoriteOrdersData,
+	(orders, favoriteOrders) => {
+		if (!orders || !favoriteOrders) {
+			return null;
+		}
+		const favoriteIds = favoriteOrders.map(({identifier}) => identifier);
+		return orders.map(item => ({
+			...item,
+			isFavorite: favoriteIds.includes(item.identifier)
+		}));
 	}
 );
 const getOrdersWithFavoriteLoadingStatus = createSelector(
 	getOrdersLoadingStatus,
-	getOrdersFavoriteLoadingStatus,
+	getFavoriteOrdersLoadingStatus,
 	combineLoadingStatuses
 );
 export const orderSelectors = {
@@ -28,9 +35,9 @@ export const orderSelectors = {
 		data: getOrdersData,
 		loadingStatus: getOrdersLoadingStatus,
 	},
-	ordersFavorite: {
-		data: getOrdersFavoriteData,
-		loadingStatus: getOrdersFavoriteLoadingStatus,
+	favoriteOrders: {
+		data: getFavoriteOrdersData,
+		loadingStatus: getFavoriteOrdersLoadingStatus,
 	},
 	ordersWithFavorite: {
 		data: getOrdersWithFavoriteData,

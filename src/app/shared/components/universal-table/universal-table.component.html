@@ -15,8 +15,10 @@
                     </ng-container>
 <!--                    TODO: Move to const-->
                     <ng-container *ngSwitchCase="col.id === 'favorite'">
-                        <mat-icon>star</mat-icon>
-                        <mat-icon>star_outline</mat-icon>
+                        <div (click)="toggleFavorite.emit(element)" class="favorite-btn">
+                            <mat-icon *ngIf="element.isFavorite" class="favorite-icon">star</mat-icon>
+                            <mat-icon *ngIf="!element.isFavorite" class="no-favorite-icon">star_outline</mat-icon>
+                        </div>
                     </ng-container>
                     <ng-container *ngSwitchDefault>{{element[col.id]}}</ng-container>
                 </ng-container>

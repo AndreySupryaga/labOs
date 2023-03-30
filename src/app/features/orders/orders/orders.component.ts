@@ -30,4 +30,8 @@ export class OrdersComponent implements OnInit {
 	reloadData(): void {
 		this.store.dispatch(OrdersActions.getOrdersWithFavorite());
 	}
+
+	toggleFavorite(data: Order): void {
+		this.store.dispatch(OrdersActions.toggleFavoriteOrder({data}));
+	}
 }

@@ -12,7 +12,11 @@ export const OrdersActions = {
 	getFavoriteOrders: getApiActions('Get Favorite Orders', props<{data: Order[]}>()),
 	getOrdersWithFavorite: createAction(getActionDescription(moduleName, 'Get Orders With Favorite')),
 	toggleFavoriteOrder: createAction(
-		getActionDescription(moduleName, 'Update Orders'),
-		props<Order>()
+		getActionDescription(moduleName, 'Toggle Favorite Orders'),
+		props<{data: Order}>()
+	),
+	updateFavoriteOrders: createAction(
+		getActionDescription(moduleName, 'Update Favorite Orders'),
+		props<{data: Order[]}>()
 	),
 };

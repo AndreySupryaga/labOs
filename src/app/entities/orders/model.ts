@@ -106,4 +106,5 @@ export interface Order {
 	exceptionServices?: any[];
 	exceptions?: any[];
 	microOrganisms?: string;
+	isFavorite?: boolean;
 }

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {TableColumn} from '@entities/universal-table/model';
 import {LoadingStatus} from '@entities/store/interfaces';
 
@@ -13,15 +13,13 @@ export class UniversalTableComponent<Row> implements OnChanges {
 	@Input() columns: TableColumn[];
 	@Input() loadingStatus: LoadingStatus;
 
+	@Output() toggleFavorite = new EventEmitter<Row>();
+
 	displayedColumns: string[];
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.columns) {
 			this.displayedColumns = this.columns.map(({id}) => id);
 		}
-	}
-
-	toggleFavorite(element: Row): void {
-
 	}
 }
