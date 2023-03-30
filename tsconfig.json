@@ -21,7 +21,8 @@
       "@core/*": ["app/core/*"],
       "@api/*": ["app/api/*"],
       "@angular/*": ["../node_modules/@angular/*"]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

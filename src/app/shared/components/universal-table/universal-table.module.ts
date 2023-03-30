@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {PipesModule} from '@shared/pipes/pipes.module';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {StatusBadgeModule} from '@shared/components/status-badge/status-badge.module';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
 	declarations: [UniversalTableComponent],
@@ -29,6 +30,7 @@ import {StatusBadgeModule} from '@shared/components/status-badge/status-badge.mo
 		PipesModule,
 		MatCheckboxModule,
 		StatusBadgeModule,
+		MatSortModule,
 	]
 })
 export class UniversalTableModule {

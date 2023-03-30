@@ -19,6 +19,10 @@
     th:not(:first-child), td:not(:first-child) {
       text-align: center;
       width: 10%;
+
+      ::ng-deep .mat-sort-header-container {
+        justify-content: center;
+      }
     }
 
     .favorite-btn {
