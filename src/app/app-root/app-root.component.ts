@@ -34,7 +34,8 @@ export class AppRootComponent implements OnInit {
 	languages = ['en', 'he'];
 	navItems = [
 		{link: 'patients', label: 'stms.menu.patients'},
-		{link: 'orders', label: 'stms.menu.orders'}
+		{link: 'orders', label: 'stms.menu.orders'},
+		{link: 'favorite', label: 'stms.menu.favorite'}
 	];
 	navigationSideMenu = [
 		...this.navItems,
@@ -49,8 +50,7 @@ export class AppRootComponent implements OnInit {
 	constructor(
 		private store: Store,
 		private storageService: LocalStorageService
-	) {
-	}
+	) {}
 
 	private static isIEorEdgeOrSafari() {
 		return ['ie', 'edge', 'safari'].includes(browser().name);

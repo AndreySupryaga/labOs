@@ -19,5 +19,4 @@ import {PatientsStoreFeatureModule} from '@store/patients';
 	],
 	providers: []
 })
-export class PatientsModule {
-}
+export class PatientsModule {}
