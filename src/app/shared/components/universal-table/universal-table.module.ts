@@ -5,6 +5,7 @@ import {MatTableModule} from '@angular/material/table';
 import {TranslateModule} from '@ngx-translate/core';
 import {MatIconModule} from '@angular/material/icon';
 import {LoaderModule} from '@shared/components/loader/loader.module';
+import {NoDataModule} from '@shared/components/no-data/no-data.module';
 
 @NgModule({
 	declarations: [UniversalTableComponent],
@@ -16,7 +17,8 @@ import {LoaderModule} from '@shared/components/loader/loader.module';
 		MatTableModule,
 		TranslateModule,
 		MatIconModule,
-		LoaderModule
+		LoaderModule,
+		NoDataModule
 	]
 })
 export class UniversalTableModule {

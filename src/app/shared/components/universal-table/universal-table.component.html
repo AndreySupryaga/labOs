@@ -1,5 +1,5 @@
 <div class="table-container mat-elevation-z8" *ngIf="loadingStatus.loaded; else loading">
-    <table mat-table [dataSource]="rows">
+    <table mat-table [dataSource]="rows" *ngIf="rows?.length; else na" >
         <ng-container *ngFor="let col of columns" [matColumnDef]="col.id">
             <th [style.width.%]="col.width"
                 mat-header-cell
@@ -13,8 +13,7 @@
                     <ng-container *ngSwitchCase="!!col.formatValue">
                         {{col.formatValue(element)}}
                     </ng-container>
-<!--                    TODO: Move to const-->
-                    <ng-container *ngSwitchCase="col.id === 'favorite'">
+                    <ng-container *ngSwitchCase="col.id === tableProps.Favorite">
                         <div (click)="toggleFavorite.emit(element)" class="favorite-btn">
                             <mat-icon *ngIf="element.isFavorite" class="favorite-icon">star</mat-icon>
                             <mat-icon *ngIf="!element.isFavorite" class="no-favorite-icon">star_outline</mat-icon>
@@ -28,6 +27,9 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <ng-template #na>
+        <st-no-data></st-no-data>
+    </ng-template>
 </div>
 <ng-template #loading>
     <div class="loader-container">

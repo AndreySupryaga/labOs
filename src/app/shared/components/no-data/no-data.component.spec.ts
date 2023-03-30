@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {UniversalTableComponent} from './universal-table.component';
+import {NoDataComponent} from './no-data.component';
 
-describe('UniversalTableComponent', () => {
-	let component: UniversalTableComponent<any>;
-	let fixture: ComponentFixture<UniversalTableComponent<any>>;
+describe('NoDataComponent', () => {
+	let component: NoDataComponent;
+	let fixture: ComponentFixture<NoDataComponent>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [UniversalTableComponent]
+			declarations: [NoDataComponent]
 		})
 			.compileComponents();
 	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(UniversalTableComponent);
+		fixture = TestBed.createComponent(NoDataComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});
