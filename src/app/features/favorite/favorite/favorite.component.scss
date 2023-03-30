@@ -1,16 +1,51 @@
+@import 'styles-variables';
+@import 'sizes';
+
 .container {
   display: flex;
   max-width: 95%;
 
   .item {
-    width: 500%;
+    width: 50%;
 
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: $default-offset;
+
+      @media (max-width: map-get($grid-breakpoints, xl)) {
+        margin-right: 0;
+
+      }
     }
   }
 
-  .table-container {
+  .table-component {
     height: calc(100vh - 180px);
+
+    @media (max-width: map-get($grid-breakpoints, xl)) {
+      height: calc(50vh - 110px);
+    }
+  }
+
+  @media (max-width: map-get($grid-breakpoints, xl)) {
+    flex-direction: column;
+
+    .item {
+      width: 100%;
+      margin-top: $default-offset;
+
+      .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+          margin: 0;
+        }
+
+        button {
+          height: 36px;
+        }
+      }
+    }
   }
 }

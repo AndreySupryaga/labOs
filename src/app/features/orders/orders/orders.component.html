@@ -1,19 +1,14 @@
-<div class="container">
-    <div rtl>
-        <h1 class="main-heading">{{ 'stms.orders.title' | translate }}</h1>
-        <div class="actions">
-            <a mat-raised-button class="actions-main" color="primary" (click)="reloadData()">
-                {{ 'stms.orders.reload-orders' | translate }}
-            </a>
-            <div class="table-container">
-                <st-universal-table
-                        [loadingStatus]="loadingStatus$ | async"
-                        [rows]="orders$ | async"
-                        [columns]="columns"
-                        [filterProp]="filterProp"
-                        (clickOnFavorite)="toggleFavorite($event)"
-                ></st-universal-table>
-            </div>
-        </div>
-    </div>
+<div class="container" rtl>
+    <h1 class="main-heading">{{ 'stms.orders.title' | translate }}</h1>
+    <button mat-raised-button color="primary" (click)="reloadData()">
+        {{ 'stms.orders.reload-orders' | translate }}
+    </button>
+    <st-universal-table
+            class="table-component"
+            [loadingStatus]="loadingStatus$ | async"
+            [rows]="orders$ | async"
+            [columns]="columns"
+            [filterProp]="filterProp"
+            (clickOnFavorite)="toggleFavorite($event)"
+    ></st-universal-table>
 </div>

@@ -1,40 +1,36 @@
 <div class="container">
     <div rtl class="item">
-        <h1 class="main-heading">{{ 'stms.orders.favorite-title' | translate }}</h1>
-        <div class="actions">
-            <a mat-raised-button class="actions-main" color="primary" (click)="reloadOrderData()">
+        <div class="item-header">
+            <h1 class="main-heading">{{ 'stms.orders.favorite-title' | translate }}</h1>
+            <button mat-raised-button color="primary" (click)="reloadOrderData()">
                 {{ 'stms.orders.reload-orders' | translate }}
-            </a>
-            <div class="table-container">
-
-                <st-universal-table
-                        [loadingStatus]="ordersLoadingStatus$ | async"
-                        [rows]="orders$ | async"
-                        [columns]="orderColumns"
-                        [filterProp]="orderFilterProp"
-                        [showFavoriteCheckbox]="false"
-                        (clickOnFavorite)="removeFromFavoriteOrder($event)"
-                ></st-universal-table>
-            </div>
+            </button>
         </div>
+        <st-universal-table
+                class="table-component"
+                [loadingStatus]="ordersLoadingStatus$ | async"
+                [rows]="orders$ | async"
+                [columns]="orderColumns"
+                [filterProp]="orderFilterProp"
+                [showFavoriteCheckbox]="false"
+                (clickOnFavorite)="removeFromFavoriteOrder($event)"
+        ></st-universal-table>
     </div>
     <div rtl class="item">
-        <h1 class="main-heading">{{ 'stms.patients.favorite-title' | translate }}</h1>
-        <div class="actions">
-            <a mat-raised-button class="actions-main" color="primary" (click)="reloadPatientData()">
+        <div class="item-header">
+            <h1 class="main-heading">{{ 'stms.patients.favorite-title' | translate }}</h1>
+            <button mat-raised-button color="primary" (click)="reloadPatientData()">
                 {{ 'stms.patients.reload-patients' | translate }}
-            </a>
-            <div class="table-container">
-
-                <st-universal-table
-                        [loadingStatus]="patientsLoadingStatus$ | async"
-                        [rows]="patients$ | async"
-                        [columns]="patientColumns"
-                        [filterProp]="patientFilterProp"
-                        [showFavoriteCheckbox]="false"
-                        (clickOnFavorite)="removeFromFavoritePatient($event)"
-                ></st-universal-table>
-            </div>
+            </button>
         </div>
+        <st-universal-table
+                class="table-component"
+                [loadingStatus]="patientsLoadingStatus$ | async"
+                [rows]="patients$ | async"
+                [columns]="patientColumns"
+                [filterProp]="patientFilterProp"
+                [showFavoriteCheckbox]="false"
+                (clickOnFavorite)="removeFromFavoritePatient($event)"
+        ></st-universal-table>
     </div>
 </div>
