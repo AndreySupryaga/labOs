@@ -12,6 +12,7 @@
                         [rows]="orders$ | async"
                         [columns]="orderColumns"
                         [filterProp]="orderFilterProp"
+                        [showFavoriteCheckbox]="false"
                         (clickOnFavorite)="removeFromFavoriteOrder($event)"
                 ></st-universal-table>
             </div>
@@ -30,6 +31,7 @@
                         [rows]="patients$ | async"
                         [columns]="patientColumns"
                         [filterProp]="patientFilterProp"
+                        [showFavoriteCheckbox]="false"
                         (clickOnFavorite)="removeFromFavoritePatient($event)"
                 ></st-universal-table>
             </div>

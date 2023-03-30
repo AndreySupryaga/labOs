@@ -9,6 +9,7 @@ import {NoDataModule} from '@shared/components/no-data/no-data.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {PipesModule} from '@shared/pipes/pipes.module';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
 	declarations: [UniversalTableComponent],
@@ -25,6 +26,7 @@ import {PipesModule} from '@shared/pipes/pipes.module';
 		ReactiveFormsModule,
 		MatInputModule,
 		PipesModule,
+		MatCheckboxModule,
 	]
 })
 export class UniversalTableModule {

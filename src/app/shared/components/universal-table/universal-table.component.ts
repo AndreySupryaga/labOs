@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {TableColumn} from '@entities/universal-table/model';
 import {LoadingStatus} from '@entities/store/interfaces';
-import {TableProps} from '@entities/universal-table/enums';
+import {TableHeaderIds} from '@entities/universal-table/enums';
 import {FormControl} from '@angular/forms';
 import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
 
@@ -16,6 +16,7 @@ export class UniversalTableComponent<Row> implements OnChanges {
 	@Input() columns: TableColumn[];
 	@Input() loadingStatus: LoadingStatus;
 	@Input() filterProp: string;
+	@Input() showFavoriteCheckbox = true;
 
 	@Output() clickOnFavorite = new EventEmitter<Row>();
 
@@ -23,6 +24,7 @@ export class UniversalTableComponent<Row> implements OnChanges {
 	favoriteFlagProperty = FAVORITE_FLAG_PROPERTY;
 	displayedColumns: string[];
 	filterControl = new FormControl('');
+	favoriteCheckboxControl = new FormControl(false);
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.columns) {

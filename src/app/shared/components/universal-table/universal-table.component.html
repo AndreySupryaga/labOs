@@ -1,24 +1,27 @@
 <ng-container *ngIf="loadingStatus.loaded; else loading">
-    <mat-form-field class="search-field">
-        <mat-icon matPrefix color="primary">search</mat-icon>
-        <input [formControl]="filterControl" matInput placeholder="Search">
-    </mat-form-field>
+    <div class="form-container">
+        <mat-form-field class="search-field">
+            <mat-icon matPrefix color="primary">search</mat-icon>
+            <input [formControl]="filterControl" matInput placeholder="Search">
+        </mat-form-field>
+        <mat-checkbox *ngIf="showFavoriteCheckbox" [formControl]="favoriteCheckboxControl">Show only favorite</mat-checkbox>
+    </div>
     <div class="table-container mat-elevation-z8">
-        <table mat-table [dataSource]="rows | filter : filterControl.value : filterProp" *ngIf="rows?.length; else na">
+        <table mat-table
+               *ngIf="rows?.length; else na"
+               [dataSource]="rows | filter : filterControl.value : filterProp | showOnlyFavorite : favoriteCheckboxControl.value"
+        >
             <ng-container *ngFor="let col of columns" [matColumnDef]="col.id">
                 <th [style.width.%]="col.width"
                     mat-header-cell
                     *matHeaderCellDef
                 >{{col.title | translate}}</th>
-                <td mat-cell
-                    [style.width.%]="col.width"
-                    *matCellDef="let element"
-                >
+                <td mat-cell [style.width.%]="col.width" *matCellDef="let element">
                     <ng-container [ngSwitch]="true">
                         <ng-container *ngSwitchCase="!!col.formatValue">
                             {{col.formatValue(element)}}
                         </ng-container>
-                        <ng-container *ngSwitchCase="col.id === tableProps.Favorite">
+                        <ng-container *ngSwitchCase="col.id === tableHeaderIds.Favorite">
                             <div (click)="clickOnFavorite.emit(element)" class="favorite-btn">
                                 <mat-icon *ngIf="element[favoriteFlagProperty]" class="favorite-icon">star</mat-icon>
                                 <mat-icon *ngIf="!element[favoriteFlagProperty]" class="no-favorite-icon">star_outline</mat-icon>

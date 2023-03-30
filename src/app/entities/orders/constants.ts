@@ -1,10 +1,10 @@
 import {TableColumn} from '@entities/universal-table/model';
 import {Order} from '@entities/orders/model';
-import {TableProps} from '@entities/universal-table/enums';
+import {TableHeaderIds} from '@entities/universal-table/enums';
 
 export const ORDER_TABLE_COLUMNS: TableColumn<Order>[] = [
 	{
-		id: TableProps.Favorite,
+		id: TableHeaderIds.Favorite,
 		title: 'stms.orders.favorite',
 		width: 1
 	},

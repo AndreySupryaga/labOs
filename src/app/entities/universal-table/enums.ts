@@ -1,3 +1,3 @@
-export enum TableProps {
+export enum TableHeaderIds {
 	Favorite = 'favorite'
 }

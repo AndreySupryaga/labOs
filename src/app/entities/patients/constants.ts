@@ -1,10 +1,10 @@
 import {TableColumn} from '@entities/universal-table/model';
 import {Patient} from '@entities/patients/model';
-import {TableProps} from '@entities/universal-table/enums';
+import {TableHeaderIds} from '@entities/universal-table/enums';
 
 export const PATIENT_TABLE_COLUMNS: TableColumn<Patient>[] = [
 	{
-		id: TableProps.Favorite,
+		id: TableHeaderIds.Favorite,
 		title: 'stms.patients.favorite',
 		width: 1
 	},
