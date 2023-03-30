@@ -1,7 +1,7 @@
 import {createAction, props} from '@ngrx/store';
 import {getActionDescription, getApiActionsForGivenModule} from '@shared/helpers/store/actions.helper';
 import {StoreModules} from '@entities/store/store';
-import {Order, OrderApiResponse} from '@entities/orders/model';
+import {Order} from '@entities/orders/model';
 
 const moduleName = StoreModules.Orders;
 

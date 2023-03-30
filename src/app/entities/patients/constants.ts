@@ -43,3 +43,5 @@ export const PATIENT_TABLE_COLUMNS: TableColumn<Patient>[] = [
 		title: 'stms.patients.id',
 	},
 ]
+
+export const FAVORITE_PATIENTS_STORAGE_KEY = 'favoriteOrders';

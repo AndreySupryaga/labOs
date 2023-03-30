@@ -38,6 +38,7 @@ const reducer = createReducer(
 			)(state)
 		}
 	),
+
 	on(OrdersActions.getFavoriteOrders.requested, (state) =>
 		pipe(assoc(OrdersStates.FavoriteOrdersLoadingStatus, STATUS.loading))(state)
 	),

@@ -10,6 +10,7 @@
                         [loadingStatus]="loadingStatus$ | async"
                         [rows]="patients$ | async"
                         [columns]="columns"
+                        (toggleFavorite)="toggleFavorite($event)"
                 ></st-universal-table>
             </div>
         </div>

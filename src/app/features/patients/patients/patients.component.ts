@@ -6,6 +6,7 @@ import {PatientsActions} from '@store/patients/actions';
 import {patientsSelectors} from '@store/patients/selectors';
 import {Patient} from '@entities/patients/model';
 import {PATIENT_TABLE_COLUMNS} from '@entities/patients/constants';
+import {Order} from '@entities/orders/model';
 
 @Component({
 	selector: 'st-patients',
@@ -13,21 +14,22 @@ import {PATIENT_TABLE_COLUMNS} from '@entities/patients/constants';
 	styleUrls: ['./patients.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PatientsComponent implements OnInit {
+export class PatientsComponent {
 	patients$: Observable<Patient[]>;
 	loadingStatus$: Observable<LoadingStatus>;
 	columns = PATIENT_TABLE_COLUMNS;
 
 	constructor(private store: Store) {
-		this.patients$ = this.store.select(patientsSelectors.patients.data)
-		this.loadingStatus$ = this.store.select(patientsSelectors.patients.loadingStatus);
-	}
-
-	ngOnInit(): void {
-		this.reloadData()
+		this.reloadData();
+		this.patients$ = this.store.select(patientsSelectors.patientsWithFavorite.data)
+		this.loadingStatus$ = this.store.select(patientsSelectors.patientsWithFavorite.loadingStatus);
 	}
 
 	reloadData(): void {
-		this.store.dispatch(PatientsActions.getPatients.requested());
+		this.store.dispatch(PatientsActions.getPatientsWithFavorite());
+	}
+
+	toggleFavorite(data: Order): void {
+		this.store.dispatch(PatientsActions.toggleFavoritePatient({data}));
 	}
 }
