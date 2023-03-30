@@ -35,7 +35,6 @@ export const ORDER_TABLE_COLUMNS: TableColumn<Order>[] = [
 			return row[this.id]?.name;
 		},
 		customSorting(a: Order, b: Order, isAsc): number {
-			console.log(this.formatValue(a));
 			return defaultSorting(this.formatValue(a), this.formatValue(b), isAsc);
 		}
 	},

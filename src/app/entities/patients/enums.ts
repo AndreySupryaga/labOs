@@ -5,4 +5,5 @@ export enum PatientProps {
 export enum PatientGender {
 	Male = 'Male',
 	Female = 'Female',
+	Unknown = 'Unknown',
 }
