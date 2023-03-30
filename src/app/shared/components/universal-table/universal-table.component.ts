@@ -14,7 +14,7 @@ export class UniversalTableComponent<Row> implements OnChanges {
 	@Input() columns: TableColumn[];
 	@Input() loadingStatus: LoadingStatus;
 
-	@Output() toggleFavorite = new EventEmitter<Row>();
+	@Output() clickOnFavorite = new EventEmitter<Row>();
 
 	tableProps = TableProps;
 	displayedColumns: string[];

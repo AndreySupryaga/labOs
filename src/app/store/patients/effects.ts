@@ -47,13 +47,27 @@ export class PatientsEffects {
 
 	toggleFavoritePatient$ = createEffect(() =>
 		this.actions$.pipe(
+			ofType(PatientsActions.removeFromFavoritePatient),
+			withLatestFrom(this.store.select(patientsSelectors.favoritePatients.data),),
+			concatMap(([{data}, favoritePatients]: [{data: Patient}, Patient[]]) => {
+					const updatedFavoritePatients = EffectsHelper.getUpdatedFavoritePatients(data, favoritePatients);
+					return this.apiService.updateFavoritePatients(updatedFavoritePatients).pipe(
+						map((data: Patient[]) => PatientsActions.updateFavoritePatients({data}))
+					)
+				}
+			)
+		),
+	);
+
+	removeFromFavoritePatient$ = createEffect(() =>
+		this.actions$.pipe(
 			ofType(PatientsActions.toggleFavoritePatient),
 			withLatestFrom(
 				this.store.select(patientsSelectors.patients.data),
 				this.store.select(patientsSelectors.favoritePatients.data),
 			),
 			concatMap(([{data}, patients, favoritePatients]: [{data: Patient}, Patient[], Patient[]]) => {
-					const updatedFavoritePatients = EffectsHelper.getUpdatedFavoritePatients(data, patients, favoritePatients);
+					const updatedFavoritePatients = EffectsHelper.getUpdatedFavoritePatients(data, favoritePatients, patients);
 					return this.apiService.updateFavoritePatients(updatedFavoritePatients).pipe(
 						map((data: Patient[]) => PatientsActions.updateFavoritePatients({data}))
 					)

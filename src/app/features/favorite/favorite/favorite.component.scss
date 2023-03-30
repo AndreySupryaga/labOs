@@ -1,3 +1,16 @@
-.loader-container {
-  height: 80vh;
+.container {
+  display: flex;
+  max-width: 1360px;
+
+  .item {
+    width: 500%;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+
+  .table-container {
+    height: 80vh;
+  }
 }

@@ -15,6 +15,10 @@ export const PatientsActions = {
 		getActionDescription(moduleName, 'Toggle Favorite Patients'),
 		props<{data: Patient}>()
 	),
+	removeFromFavoritePatient: createAction(
+		getActionDescription(moduleName, 'Remove Favorite Patients'),
+		props<{data: Patient}>()
+	),
 	updateFavoritePatients: createAction(
 		getActionDescription(moduleName, 'Update Favorite Patients'),
 		props<{data: Patient[]}>()

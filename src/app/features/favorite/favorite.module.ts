@@ -6,6 +6,7 @@ import {FavoriteRoutingModule} from './favorite-routing.module';
 import {OrdersStoreFeatureModule} from '@store/orders';
 import {UniversalTableModule} from '@shared/components/universal-table/universal-table.module';
 import {LoaderModule} from '@shared/components/loader/loader.module';
+import {PatientsStoreFeatureModule} from '@store/patients';
 
 @NgModule({
 	declarations: [FavoriteComponent],
@@ -14,6 +15,7 @@ import {LoaderModule} from '@shared/components/loader/loader.module';
 		SharedModule,
 		FavoriteRoutingModule,
 		OrdersStoreFeatureModule,
+		PatientsStoreFeatureModule,
 		UniversalTableModule,
 		LoaderModule
 	]

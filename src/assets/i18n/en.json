@@ -28,6 +28,7 @@
   "stms.settings.title": "Settings",
 
   "stms.patients.title": "Patients",
+  "stms.patients.favorite-title": "Favorite patients",
   "stms.patients.reload-patients": "Reload patients",
   "stms.patients.name": "Name",
   "stms.patients.gender": "Gender",
@@ -36,6 +37,7 @@
   "stms.patients.phone": "Phone",
 
   "stms.orders.title": "Orders",
+  "stms.orders.favorite-title": "Favorite orders",
   "stms.orders.reload-orders": "Reload orders",
   "stms.orders.order-name": "Order name",
   "stms.orders.order-status": "Status",

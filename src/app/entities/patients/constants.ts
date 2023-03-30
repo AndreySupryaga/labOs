@@ -45,4 +45,4 @@ export const PATIENT_TABLE_COLUMNS: TableColumn<Patient>[] = [
 	},
 ]
 
-export const FAVORITE_PATIENTS_STORAGE_KEY = 'favoriteOrders';
+export const FAVORITE_PATIENTS_STORAGE_KEY = 'favoritePatients';

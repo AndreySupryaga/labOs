@@ -15,6 +15,10 @@ export const OrdersActions = {
 		getActionDescription(moduleName, 'Toggle Favorite Orders'),
 		props<{data: Order}>()
 	),
+	removeFromFavoriteOrder: createAction(
+		getActionDescription(moduleName, 'Remove Favorite Orders'),
+		props<{data: Order}>()
+	),
 	updateFavoriteOrders: createAction(
 		getActionDescription(moduleName, 'Update Favorite Orders'),
 		props<{data: Order[]}>()

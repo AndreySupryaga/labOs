@@ -14,7 +14,7 @@
                         {{col.formatValue(element)}}
                     </ng-container>
                     <ng-container *ngSwitchCase="col.id === tableProps.Favorite">
-                        <div (click)="toggleFavorite.emit(element)" class="favorite-btn">
+                        <div (click)="clickOnFavorite.emit(element)" class="favorite-btn">
                             <mat-icon *ngIf="element.isFavorite" class="favorite-icon">star</mat-icon>
                             <mat-icon *ngIf="!element.isFavorite" class="no-favorite-icon">star_outline</mat-icon>
                         </div>

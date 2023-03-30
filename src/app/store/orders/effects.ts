@@ -53,7 +53,23 @@ export class OrdersEffects {
 				this.store.select(orderSelectors.favoriteOrders.data),
 			),
 			concatMap(([{data}, orders, favoriteOrders]: [{data: Order}, Order[], Order[]]) => {
-					const updatedFavoriteOrders = EffectsHelper.getUpdatedFavoriteOrders(data, orders, favoriteOrders);
+					const updatedFavoriteOrders = EffectsHelper.getUpdatedFavoriteOrders(data, favoriteOrders, orders);
+					return this.apiService.updateFavoriteOrders(updatedFavoriteOrders).pipe(
+						map((data: Order[]) => OrdersActions.updateFavoriteOrders({data}))
+					)
+				}
+			)
+		),
+	);
+
+	removeFromFavoriteOrder$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(OrdersActions.removeFromFavoriteOrder),
+			withLatestFrom(
+				this.store.select(orderSelectors.favoriteOrders.data),
+			),
+			concatMap(([{data}, favoriteOrders]: [{data: Order}, Order[]]) => {
+					const updatedFavoriteOrders = EffectsHelper.getUpdatedFavoriteOrders(data, favoriteOrders);
 					return this.apiService.updateFavoriteOrders(updatedFavoriteOrders).pipe(
 						map((data: Order[]) => OrdersActions.updateFavoriteOrders({data}))
 					)

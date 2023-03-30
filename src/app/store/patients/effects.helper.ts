@@ -4,8 +4,8 @@ import {Patient} from '@entities/patients/model';
 export class EffectsHelper {
 	static getUpdatedFavoritePatients(
 		patient: Patient,
-		patients: Patient[],
-		favoritePatient: Patient[]
+		favoritePatient: Patient[],
+		patients?: Patient[],
 	): Order[] {
 		const isExistInFavoriteList = favoritePatient
 			.some(({defaultId}) => defaultId === patient.defaultId);
@@ -15,8 +15,12 @@ export class EffectsHelper {
 				.filter(({defaultId}) => defaultId !== patient.defaultId);
 		}
 
-		const orderInList = patients.find(({defaultId}) => defaultId === patient.defaultId);
+		if (!patients) {
+			return [];
+		}
 
-		return [...favoritePatient, orderInList];
+		const newPatient = patients.find(({defaultId}) => defaultId === patient.defaultId);
+
+		return [...favoritePatient, {...newPatient, isFavorite: true}];
 	}
 }
