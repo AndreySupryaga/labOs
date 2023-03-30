@@ -41,3 +41,5 @@ export const ORDER_TABLE_COLUMNS: TableColumn<Order>[] = [
 		}
 	},
 ]
+
+export const FAVORITE_ORDER_STORAGE_KEY = 'favoriteOrders';

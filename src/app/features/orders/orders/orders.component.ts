@@ -19,8 +19,8 @@ export class OrdersComponent implements OnInit {
 	columns = ORDER_TABLE_COLUMNS;
 
 	constructor(private store: Store) {
-		this.orders$ = this.store.select(orderSelectors.orders.data)
-		this.loadingStatus$ = this.store.select(orderSelectors.orders.loadingStatus);
+		this.orders$ = this.store.select(orderSelectors.ordersWithFavorite.data)
+		this.loadingStatus$ = this.store.select(orderSelectors.ordersWithFavorite.loadingStatus);
 	}
 
 	ngOnInit(): void {
@@ -28,6 +28,6 @@ export class OrdersComponent implements OnInit {
 	}
 
 	reloadData(): void {
-		this.store.dispatch(OrdersActions.getOrders.requested());
+		this.store.dispatch(OrdersActions.getOrdersWithFavorite());
 	}
 }

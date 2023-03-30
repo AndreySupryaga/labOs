@@ -1,24 +1,27 @@
-import {Component, OnInit, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {Order} from '@entities/orders/model';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {TableColumn} from '@entities/universal-table/model';
 import {LoadingStatus} from '@entities/store/interfaces';
 
 @Component({
-  selector: 'st-universal-table',
-  templateUrl: './universal-table.component.html',
-  styleUrls: ['./universal-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'st-universal-table',
+	templateUrl: './universal-table.component.html',
+	styleUrls: ['./universal-table.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UniversalTableComponent implements OnChanges {
-  @Input() rows: Order[];
-  @Input() columns: TableColumn[];
-  @Input() loadingStatus: LoadingStatus;
+export class UniversalTableComponent<Row> implements OnChanges {
+	@Input() rows: Row[];
+	@Input() columns: TableColumn[];
+	@Input() loadingStatus: LoadingStatus;
 
-  displayedColumns: string[];
+	displayedColumns: string[];
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.columns) {
-      this.displayedColumns = this.columns.map(({id}) => id);
-    }
-  }
+	ngOnChanges(changes: SimpleChanges): void {
+		if (changes.columns) {
+			this.displayedColumns = this.columns.map(({id}) => id);
+		}
+	}
+
+	toggleFavorite(element: Row): void {
+
+	}
 }

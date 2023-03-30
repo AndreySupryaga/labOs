@@ -1,4 +1,5 @@
 @import "sizes";
+@import "colors";
 
 :host {
   display: flex;
@@ -18,6 +19,18 @@
     th:not(:first-child), td:not(:first-child) {
       text-align: center;
       width: 10%;
+    }
+
+    .favorite-btn {
+      cursor: pointer;
+
+      .favorite-icon {
+        color: $yellow-color;
+      }
+
+      .no-favorite-icon {
+        color: $gray-color;
+      }
     }
   }
 }
