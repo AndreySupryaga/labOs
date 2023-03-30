@@ -11,6 +11,7 @@
                         [loadingStatus]="ordersLoadingStatus$ | async"
                         [rows]="orders$ | async"
                         [columns]="orderColumns"
+                        [filterProp]="orderFilterProp"
                         (clickOnFavorite)="removeFromFavoriteOrder($event)"
                 ></st-universal-table>
             </div>
@@ -28,6 +29,7 @@
                         [loadingStatus]="patientsLoadingStatus$ | async"
                         [rows]="patients$ | async"
                         [columns]="patientColumns"
+                        [filterProp]="patientFilterProp"
                         (clickOnFavorite)="removeFromFavoritePatient($event)"
                 ></st-universal-table>
             </div>

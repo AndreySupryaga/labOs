@@ -44,3 +44,4 @@ export const ORDER_TABLE_COLUMNS: TableColumn<Order>[] = [
 ]
 
 export const FAVORITE_ORDER_STORAGE_KEY = 'favoriteOrders';
+export const ORDER_FILTER_PROP = 'orderName';

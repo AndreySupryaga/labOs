@@ -46,3 +46,4 @@ export const PATIENT_TABLE_COLUMNS: TableColumn<Patient>[] = [
 ]
 
 export const FAVORITE_PATIENTS_STORAGE_KEY = 'favoritePatients';
+export const PATIENTS_FILTER_PROP = 'fullName';

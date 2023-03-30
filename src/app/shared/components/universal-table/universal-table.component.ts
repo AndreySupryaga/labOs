@@ -14,6 +14,7 @@ export class UniversalTableComponent<Row> implements OnChanges {
 	@Input() rows: Row[];
 	@Input() columns: TableColumn[];
 	@Input() loadingStatus: LoadingStatus;
+	@Input() filterProp: string;
 
 	@Output() clickOnFavorite = new EventEmitter<Row>();
 
@@ -23,6 +24,9 @@ export class UniversalTableComponent<Row> implements OnChanges {
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.columns) {
+			this.displayedColumns = this.columns.map(({id}) => id);
+		}
+		if (changes.rows) {
 			this.displayedColumns = this.columns.map(({id}) => id);
 		}
 	}

@@ -8,7 +8,6 @@
 }
 
 .table-container {
-  margin-top: $default-offset;
   height: 100%;
   width: 100%;
   overflow: auto;
@@ -50,4 +49,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.search-field {
+  max-width: 300px;
 }

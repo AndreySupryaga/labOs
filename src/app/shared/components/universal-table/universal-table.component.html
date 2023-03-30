@@ -1,40 +1,42 @@
-<mat-form-field>
-    <mat-icon matPrefix color="primary">search</mat-icon>
-    <input [formControl]="filterControl" matInput placeholder="Search">
-</mat-form-field>
-<div class="table-container mat-elevation-z8" *ngIf="loadingStatus.loaded; else loading">
-    <table mat-table [dataSource]="rows" *ngIf="rows?.length; else na" >
-        <ng-container *ngFor="let col of columns" [matColumnDef]="col.id">
-            <th [style.width.%]="col.width"
-                mat-header-cell
-                *matHeaderCellDef
-            >{{col.title | translate}}</th>
-            <td mat-cell
-                [style.width.%]="col.width"
-                *matCellDef="let element"
-            >
-                <ng-container [ngSwitch]="true">
-                    <ng-container *ngSwitchCase="!!col.formatValue">
-                        {{col.formatValue(element)}}
+<ng-container *ngIf="loadingStatus.loaded; else loading">
+    <mat-form-field class="search-field">
+        <mat-icon matPrefix color="primary">search</mat-icon>
+        <input [formControl]="filterControl" matInput placeholder="Search">
+    </mat-form-field>
+    <div class="table-container mat-elevation-z8">
+        <table mat-table [dataSource]="rows | filter : filterControl.value : filterProp" *ngIf="rows?.length; else na">
+            <ng-container *ngFor="let col of columns" [matColumnDef]="col.id">
+                <th [style.width.%]="col.width"
+                    mat-header-cell
+                    *matHeaderCellDef
+                >{{col.title | translate}}</th>
+                <td mat-cell
+                    [style.width.%]="col.width"
+                    *matCellDef="let element"
+                >
+                    <ng-container [ngSwitch]="true">
+                        <ng-container *ngSwitchCase="!!col.formatValue">
+                            {{col.formatValue(element)}}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="col.id === tableProps.Favorite">
+                            <div (click)="clickOnFavorite.emit(element)" class="favorite-btn">
+                                <mat-icon *ngIf="element.isFavorite" class="favorite-icon">star</mat-icon>
+                                <mat-icon *ngIf="!element.isFavorite" class="no-favorite-icon">star_outline</mat-icon>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngSwitchDefault>{{element[col.id]}}</ng-container>
                     </ng-container>
-                    <ng-container *ngSwitchCase="col.id === tableProps.Favorite">
-                        <div (click)="clickOnFavorite.emit(element)" class="favorite-btn">
-                            <mat-icon *ngIf="element.isFavorite" class="favorite-icon">star</mat-icon>
-                            <mat-icon *ngIf="!element.isFavorite" class="no-favorite-icon">star_outline</mat-icon>
-                        </div>
-                    </ng-container>
-                    <ng-container *ngSwitchDefault>{{element[col.id]}}</ng-container>
-                </ng-container>
-            </td>
-        </ng-container>
+                </td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <ng-template #na>
-        <st-no-data></st-no-data>
-    </ng-template>
-</div>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <ng-template #na>
+            <st-no-data></st-no-data>
+        </ng-template>
+    </div>
+</ng-container>
 <ng-template #loading>
     <div class="loader-container">
         <st-loader></st-loader>

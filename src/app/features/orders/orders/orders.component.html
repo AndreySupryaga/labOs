@@ -10,6 +10,7 @@
                         [loadingStatus]="loadingStatus$ | async"
                         [rows]="orders$ | async"
                         [columns]="columns"
+                        [filterProp]="filterProp"
                         (clickOnFavorite)="toggleFavorite($event)"
                 ></st-universal-table>
             </div>

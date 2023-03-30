@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {Order} from '@entities/orders/model';
 import {orderSelectors} from '@store/orders/selectors';
 import {LoadingStatus} from '@entities/store/interfaces';
-import {ORDER_TABLE_COLUMNS} from '@entities/orders/constants';
+import {ORDER_FILTER_PROP, ORDER_TABLE_COLUMNS} from '@entities/orders/constants';
 
 @Component({
 	selector: 'st-orders',
@@ -17,6 +17,7 @@ export class OrdersComponent implements OnInit {
 	orders$: Observable<Order[]>;
 	loadingStatus$: Observable<LoadingStatus>;
 	columns = ORDER_TABLE_COLUMNS;
+	filterProp = ORDER_FILTER_PROP;
 
 	constructor(private store: Store) {
 		this.orders$ = this.store.select(orderSelectors.ordersWithFavorite.data)

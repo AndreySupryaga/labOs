@@ -5,11 +5,11 @@ import {Observable} from 'rxjs';
 import {Order} from '@entities/orders/model';
 import {orderSelectors} from '@store/orders/selectors';
 import {LoadingStatus} from '@entities/store/interfaces';
-import {ORDER_TABLE_COLUMNS} from '@entities/orders/constants';
+import {ORDER_FILTER_PROP, ORDER_TABLE_COLUMNS} from '@entities/orders/constants';
 import {Patient} from '@entities/patients/model';
 import {PatientsActions} from '@store/patients/actions';
 import {patientsSelectors} from '@store/patients/selectors';
-import {PATIENT_TABLE_COLUMNS} from '@entities/patients/constants';
+import {PATIENT_TABLE_COLUMNS, PATIENTS_FILTER_PROP} from '@entities/patients/constants';
 
 @Component({
 	selector: 'st-favorite',
@@ -25,7 +25,8 @@ export class FavoriteComponent {
 
 	orderColumns = ORDER_TABLE_COLUMNS;
 	patientColumns = PATIENT_TABLE_COLUMNS;
-
+	orderFilterProp = ORDER_FILTER_PROP;
+	patientFilterProp = PATIENTS_FILTER_PROP;
 
 	constructor(private store: Store) {
 		this.orders$ = this.store.select(orderSelectors.favoriteOrders.data)
