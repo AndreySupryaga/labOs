@@ -1,6 +1,7 @@
 import {TableColumn} from '@entities/universal-table/model';
 import {Patient} from '@entities/patients/model';
 import {TableHeaderIds} from '@entities/universal-table/enums';
+import {PatientGender} from '@entities/patients/enums';
 
 export const PATIENT_TABLE_COLUMNS: TableColumn<Patient>[] = [
 	{
@@ -29,7 +30,7 @@ export const PATIENT_TABLE_COLUMNS: TableColumn<Patient>[] = [
 		id: 'sex',
 		title: 'stms.patients.gender',
 		formatValue(row: Patient): string {
-			return row[this.id]?.name;
+			return row[this.id]?.name === PatientGender.Male ? `♂ ${row[this.id]?.name}` : `♀ ${row[this.id]?.name}`;
 		}
 	},
 	{

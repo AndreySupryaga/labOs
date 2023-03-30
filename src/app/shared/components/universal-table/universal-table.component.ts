@@ -30,8 +30,5 @@ export class UniversalTableComponent<Row> implements OnChanges {
 		if (changes.columns) {
 			this.displayedColumns = this.columns.map(({id}) => id);
 		}
-		if (changes.rows) {
-			this.displayedColumns = this.columns.map(({id}) => id);
-		}
 	}
 }
