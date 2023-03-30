@@ -22,7 +22,7 @@ export class OrdersApiService {
 	getFavoriteOrders(): Observable<Order[]> {
 		const orders = this.localStorageService.getItem(FAVORITE_ORDER_STORAGE_KEY) ?? [];
 		// TODO: Emulate api delay
-		return of(orders).pipe(delay(2000));
+		return of(orders).pipe(delay(1500));
 	}
 
 	updateFavoriteOrders(data: Order[]): Observable<Order[]> {

@@ -23,7 +23,7 @@ export class PatientsApiService {
 	getFavoritePatients(): Observable<Patient[]> {
 		const orders = this.localStorageService.getItem(FAVORITE_PATIENTS_STORAGE_KEY) ?? [];
 		// TODO: Emulate api delay
-		return of(orders).pipe(delay(2000));
+		return of(orders).pipe(delay(1500));
 	}
 
 	updateFavoritePatients(data: Patient[]): Observable<Patient[]> {
