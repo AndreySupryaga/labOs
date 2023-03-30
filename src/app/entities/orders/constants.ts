@@ -37,9 +37,7 @@ export const ORDER_TABLE_COLUMNS: TableColumn<Order>[] = [
 	{
 		id: 'status',
 		title: 'stms.orders.order-status',
-		formatValue(row: Order): string {
-			return row[this.id]?.name;
-		}
+		isStatus: true,
 	},
 ]
 

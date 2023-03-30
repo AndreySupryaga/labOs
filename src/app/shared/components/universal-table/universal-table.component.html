@@ -18,8 +18,9 @@
                 >{{col.title | translate}}</th>
                 <td mat-cell [style.width.%]="col.width" *matCellDef="let element">
                     <ng-container [ngSwitch]="true">
-                        <ng-container *ngSwitchCase="!!col.formatValue">
-                            {{col.formatValue(element)}}
+                        <ng-container *ngSwitchCase="!!col.formatValue">{{col.formatValue(element)}}</ng-container>
+                        <ng-container *ngSwitchCase="col.isStatus">
+                            <st-status-badge [statusData]="element[col.id]"></st-status-badge>
                         </ng-container>
                         <ng-container *ngSwitchCase="col.id === tableHeaderIds.Favorite">
                             <div (click)="clickOnFavorite.emit(element)" class="favorite-btn">

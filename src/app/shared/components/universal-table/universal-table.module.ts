@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {PipesModule} from '@shared/pipes/pipes.module';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {StatusBadgeModule} from '@shared/components/status-badge/status-badge.module';
 
 @NgModule({
 	declarations: [UniversalTableComponent],
@@ -27,6 +28,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 		MatInputModule,
 		PipesModule,
 		MatCheckboxModule,
+		StatusBadgeModule,
 	]
 })
 export class UniversalTableModule {

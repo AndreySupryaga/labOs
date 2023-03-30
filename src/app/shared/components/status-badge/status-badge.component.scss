@@ -1,0 +1,23 @@
+@import "sizes";
+
+:host {
+  //TODO: Need to move colors to variables
+  background-color: #aaaaaa;
+  border-radius: $default-offset-half;
+  padding: $default-offset-quoter $default-offset-half;
+
+  &.pending {
+    background-color: #ebedef;
+    color: #40464f;
+  }
+
+  &.progress {
+    background-color: #d6f0e0;
+    color: #0d6832;
+  }
+
+  &.completed {
+    background-color: #dfe7f6;
+    color: #2c58a0;
+  }
+}
