@@ -1,5 +1,6 @@
 import {Order} from '@entities/orders/model';
 import {Patient} from '@entities/patients/model';
+import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
 
 export class EffectsHelper {
 	static getUpdatedFavoritePatients(
@@ -21,6 +22,6 @@ export class EffectsHelper {
 
 		const newPatient = patients.find(({defaultId}) => defaultId === patient.defaultId);
 
-		return [...favoritePatient, {...newPatient, isFavorite: true}];
+		return [...favoritePatient, {...newPatient, [FAVORITE_FLAG_PROPERTY]: true}];
 	}
 }

@@ -3,6 +3,7 @@ import {TableColumn} from '@entities/universal-table/model';
 import {LoadingStatus} from '@entities/store/interfaces';
 import {TableProps} from '@entities/universal-table/enums';
 import {FormControl} from '@angular/forms';
+import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
 
 @Component({
 	selector: 'st-universal-table',
@@ -18,7 +19,8 @@ export class UniversalTableComponent<Row> implements OnChanges {
 
 	@Output() clickOnFavorite = new EventEmitter<Row>();
 
-	tableProps = TableProps;
+	tableHeaderIds = TableHeaderIds;
+	favoriteFlagProperty = FAVORITE_FLAG_PROPERTY;
 	displayedColumns: string[];
 	filterControl = new FormControl('');
 

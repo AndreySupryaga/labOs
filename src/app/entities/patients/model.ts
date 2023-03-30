@@ -1,3 +1,5 @@
+import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
+
 export interface PatientsApiResponse {
 	patient: Patient[]
 	count: number;
@@ -64,5 +66,5 @@ export interface Patient {
 	height?: string;
 	followUpPatient?: any;
 	isHospitalized?: boolean;
-	isFavorite?: boolean;
+	[FAVORITE_FLAG_PROPERTY]?: boolean;
 }

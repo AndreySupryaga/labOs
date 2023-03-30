@@ -1,3 +1,5 @@
+import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
+
 export interface OrderApiResponse {
 	order: Order[]
 	count: number;
@@ -106,5 +108,5 @@ export interface Order {
 	exceptionServices?: any[];
 	exceptions?: any[];
 	microOrganisms?: string;
-	isFavorite?: boolean;
+	[FAVORITE_FLAG_PROPERTY]?: boolean;
 }

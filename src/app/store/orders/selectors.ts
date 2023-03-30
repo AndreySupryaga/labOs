@@ -2,6 +2,7 @@ import {OrdersState, OrdersStates} from '@store/orders/reducer';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {StoreModules} from '@entities/store/store';
 import {combineLoadingStatuses} from '@shared/helpers/store/selectors.helper';
+import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
 
 const getState = createFeatureSelector<OrdersState>(StoreModules.Orders);
 
@@ -21,7 +22,7 @@ const getOrdersWithFavoriteData = createSelector(
 		const favoriteIds = favoriteOrders.map(({identifier}) => identifier);
 		return orders.map(item => ({
 			...item,
-			isFavorite: favoriteIds.includes(item.identifier)
+			[FAVORITE_FLAG_PROPERTY]: favoriteIds.includes(item.identifier)
 		}));
 	}
 );

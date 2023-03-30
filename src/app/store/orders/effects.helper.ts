@@ -1,4 +1,5 @@
 import {Order} from '@entities/orders/model';
+import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
 
 export class EffectsHelper {
 	static getUpdatedFavoriteOrders(
@@ -20,6 +21,6 @@ export class EffectsHelper {
 
 		const newOrder = orders.find(({identifier}) => identifier === order.identifier);
 
-		return [...favoriteOrders, {...newOrder, isFavorite: true}];
+		return [...favoriteOrders, {...newOrder, [FAVORITE_FLAG_PROPERTY]: true}];
 	}
 }

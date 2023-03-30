@@ -51,6 +51,13 @@
   justify-content: center;
 }
 
-.search-field {
-  max-width: 300px;
+.form-container {
+  display: flex;
+  align-items: center;
+
+  .search-field {
+    max-width: 300px;
+    margin-right: $default-offset-double;
+  }
 }
+

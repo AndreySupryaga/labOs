@@ -20,8 +20,8 @@
                         </ng-container>
                         <ng-container *ngSwitchCase="col.id === tableProps.Favorite">
                             <div (click)="clickOnFavorite.emit(element)" class="favorite-btn">
-                                <mat-icon *ngIf="element.isFavorite" class="favorite-icon">star</mat-icon>
-                                <mat-icon *ngIf="!element.isFavorite" class="no-favorite-icon">star_outline</mat-icon>
+                                <mat-icon *ngIf="element[favoriteFlagProperty]" class="favorite-icon">star</mat-icon>
+                                <mat-icon *ngIf="!element[favoriteFlagProperty]" class="no-favorite-icon">star_outline</mat-icon>
                             </div>
                         </ng-container>
                         <ng-container *ngSwitchDefault>{{element[col.id]}}</ng-container>
