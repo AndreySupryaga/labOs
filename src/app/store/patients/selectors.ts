@@ -1,8 +1,8 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {StoreModules} from '@entities/store/store';
 import {PatientsState, PatientsStates} from '@store/patients/reducer';
-import {combineLoadingStatuses} from '@shared/helpers/store/selectors.helper';
-import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
+import {combineLoadingStatuses, mapItemsWithFavorite} from '@shared/helpers/store/selectors.helper';
+import {PatientProps} from '@entities/patients/enums';
 
 const getState = createFeatureSelector<PatientsState>(StoreModules.Patients);
 
@@ -15,16 +15,7 @@ const getFavoritePatientsLoadingStatus = createSelector(getState, (state: Patien
 const getPatientsWithFavoriteData = createSelector(
 	getPatientsData,
 	getFavoritePatientsData,
-	(orders, favoritePatients) => {
-		if (!orders || !favoritePatients) {
-			return null;
-		}
-		const favoriteIds = favoritePatients.map(({defaultId}) => defaultId);
-		return orders.map(item => ({
-			...item,
-			[FAVORITE_FLAG_PROPERTY]: favoriteIds.includes(item.defaultId)
-		}));
-	}
+	(data, favoriteData,) => mapItemsWithFavorite(data, favoriteData, PatientProps.DefaultId)
 );
 
 const getPatientsWithFavoriteLoadingStatus = createSelector(
