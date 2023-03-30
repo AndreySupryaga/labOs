@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Outp
 import {TableColumn} from '@entities/universal-table/model';
 import {LoadingStatus} from '@entities/store/interfaces';
 import {TableProps} from '@entities/universal-table/enums';
+import {FormControl} from '@angular/forms';
 
 @Component({
 	selector: 'st-universal-table',
@@ -18,6 +19,7 @@ export class UniversalTableComponent<Row> implements OnChanges {
 
 	tableProps = TableProps;
 	displayedColumns: string[];
+	filterControl = new FormControl('');
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.columns) {

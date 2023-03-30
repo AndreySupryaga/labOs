@@ -6,6 +6,8 @@ import {TranslateModule} from '@ngx-translate/core';
 import {MatIconModule} from '@angular/material/icon';
 import {LoaderModule} from '@shared/components/loader/loader.module';
 import {NoDataModule} from '@shared/components/no-data/no-data.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
 	declarations: [UniversalTableComponent],
@@ -18,7 +20,9 @@ import {NoDataModule} from '@shared/components/no-data/no-data.module';
 		TranslateModule,
 		MatIconModule,
 		LoaderModule,
-		NoDataModule
+		NoDataModule,
+		ReactiveFormsModule,
+		MatInputModule,
 	]
 })
 export class UniversalTableModule {
