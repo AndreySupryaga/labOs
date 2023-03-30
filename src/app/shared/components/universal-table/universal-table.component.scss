@@ -1,8 +1,14 @@
 @import "sizes";
 
+:host {
+  display: flex;
+  height: 100%;
+}
+
 .table-container {
   margin-top: $default-offset;
-  height: 80vh;
+  height: 100%;
+  width: 100%;
   overflow: auto;
   border-radius: $default-offset-half;
 
@@ -14,4 +20,9 @@
       width: 10%;
     }
   }
+}
+
+.loader-container {
+  height: 100%;
+  width: 100%;
 }

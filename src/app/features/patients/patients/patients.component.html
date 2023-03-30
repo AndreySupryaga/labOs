@@ -2,17 +2,16 @@
     <div rtl>
         <h1 class="main-heading">{{ 'stms.patients.title' | translate }}</h1>
         <div class="actions">
-            <a mat-raised-button class="actions-main" color="primary">
-                {{ 'stms.patients.get-patients' | translate }}
+            <a mat-raised-button class="actions-main" color="primary" (click)="reloadData()">
+                {{ 'stms.patients.reload-patients' | translate }}
             </a>
-            <div *ngIf="(loadingStatus$ | async).loading" class="loader-container">
-                <st-loader></st-loader>
+            <div class="table-container">
+                <st-universal-table
+                        [loadingStatus]="loadingStatus$ | async"
+                        [rows]="patients$ | async"
+                        [columns]="columns"
+                ></st-universal-table>
             </div>
-            <st-universal-table
-                    *ngIf="(loadingStatus$ | async).loaded"
-                    [rows]="patients$ | async"
-                    [columns]="columns"
-            ></st-universal-table>
         </div>
     </div>
 </div>

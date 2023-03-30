@@ -4,7 +4,6 @@ import {SharedModule} from '@shared/shared.module';
 import {PatientsRoutingModule} from './patients-routing.module';
 import {PatientsComponent} from './patients/patients.component';
 import {UniversalTableModule} from '@shared/components/universal-table/universal-table.module';
-import {LoaderModule} from '@shared/components/loader/loader.module';
 import {PatientsStoreFeatureModule} from '@store/patients';
 
 @NgModule({
@@ -14,7 +13,6 @@ import {PatientsStoreFeatureModule} from '@store/patients';
 		SharedModule,
 		PatientsRoutingModule,
 		UniversalTableModule,
-		LoaderModule,
 		PatientsStoreFeatureModule
 	],
 	providers: []

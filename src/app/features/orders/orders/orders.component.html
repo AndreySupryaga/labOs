@@ -5,14 +5,13 @@
             <a mat-raised-button class="actions-main" color="primary" (click)="reloadData()">
                 {{ 'stms.orders.reload-orders' | translate }}
             </a>
-            <div *ngIf="(loadingStatus$ | async).loading" class="loader-container">
-                <st-loader></st-loader>
+            <div class="table-container">
+                <st-universal-table
+                        [loadingStatus]="loadingStatus$ | async"
+                        [rows]="orders$ | async"
+                        [columns]="columns"
+                ></st-universal-table>
             </div>
-            <st-universal-table
-                    *ngIf="(loadingStatus$ | async).loaded"
-                    [rows]="orders$ | async"
-                    [columns]="columns"
-            ></st-universal-table>
         </div>
     </div>
 </div>

@@ -28,7 +28,7 @@
   "stms.settings.title": "Settings",
 
   "stms.patients.title": "Patients",
-  "stms.patients.get-patients": "Get patients",
+  "stms.patients.reload-patients": "Reload patients",
   "stms.patients.name": "Name",
   "stms.patients.gender": "Gender",
   "stms.patients.id": "Id",

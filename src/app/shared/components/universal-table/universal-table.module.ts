@@ -4,6 +4,7 @@ import {UniversalTableComponent} from '@shared/components/universal-table/univer
 import {MatTableModule} from '@angular/material/table';
 import {TranslateModule} from '@ngx-translate/core';
 import {MatIconModule} from '@angular/material/icon';
+import {LoaderModule} from '@shared/components/loader/loader.module';
 
 @NgModule({
 	declarations: [UniversalTableComponent],
@@ -14,7 +15,8 @@ import {MatIconModule} from '@angular/material/icon';
 		CommonModule,
 		MatTableModule,
 		TranslateModule,
-		MatIconModule
+		MatIconModule,
+		LoaderModule
 	]
 })
 export class UniversalTableModule {
