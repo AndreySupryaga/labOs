@@ -5,22 +5,23 @@ import {Patient} from '@entities/patients/model';
 
 const moduleName = StoreModules.Patients;
 
+const getDesc = (desc) => getActionDescription(moduleName, desc);
 const getApiActions = getApiActionsForGivenModule(moduleName);
 
 export const PatientsActions = {
 	getPatients: getApiActions('Get Patients', props<{data: Patient[]}>()),
 	getFavoritePatients: getApiActions('Get Favorite Patients', props<{data: Patient[]}>()),
-	getPatientsWithFavorite: createAction(getActionDescription(moduleName, 'Get Patients With Favorite')),
+	getPatientsWithFavorite: createAction(getDesc('Get Patients With Favorite')),
 	toggleFavoritePatient: createAction(
-		getActionDescription(moduleName, 'Toggle Favorite Patients'),
+		getDesc('Toggle Favorite Patients'),
 		props<{data: Patient}>()
 	),
 	removeFromFavoritePatient: createAction(
-		getActionDescription(moduleName, 'Remove Favorite Patients'),
+		getDesc('Remove Favorite Patients'),
 		props<{data: Patient}>()
 	),
 	updateFavoritePatients: createAction(
-		getActionDescription(moduleName, 'Update Favorite Patients'),
+		getDesc('Update Favorite Patients'),
 		props<{data: Patient[]}>()
 	),
 };
