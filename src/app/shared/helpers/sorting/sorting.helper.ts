@@ -19,5 +19,5 @@ export function defaultNumberSorting<Row>(a: Row, b: Row, isAsc: boolean, prop?:
 }
 
 function sortComparator(aVal, bVal, isAsc): number {
-	return (aVal < bVal ? -1 : 1) * (isAsc ? 1 : -1);
+	return aVal === bVal ? 0 : (aVal < bVal ? -1 : 1) * (isAsc ? 1 : -1);
 }
