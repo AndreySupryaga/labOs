@@ -1,5 +1,10 @@
 export enum PatientProps {
-	DefaultId = 'defaultId'
+	DefaultId = 'defaultId',
+	FullName = 'fullName',
+	BirthDate = 'birthDate',
+	Sex = 'sex',
+	Address = 'address',
+	Favorite = 'favorite'
 }
 
 export enum PatientGender {

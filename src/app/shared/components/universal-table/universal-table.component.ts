@@ -44,8 +44,8 @@ export class UniversalTableComponent<Row> implements OnChanges {
 	favoriteCheckboxControl = new FormControl(false);
 
 	ngOnChanges(changes: SimpleChanges): void {
-		if (changes.columns) {
-			this.displayedColumns = this.columns.map(({id}) => id);
+		if (changes.columns && this.columns) {
+			this.initDisplayedColumns();
 		}
 
 		if (changes.rows && this.rows) {
@@ -55,6 +55,10 @@ export class UniversalTableComponent<Row> implements OnChanges {
 
 	initSortedRows(): void {
 		this.sortedRows = clone(this.rows);
+	}
+
+	initDisplayedColumns(): void {
+		this.displayedColumns = this.columns.map(({id}) => id);
 	}
 
 	sortChange(sort: Sort): void {

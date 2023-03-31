@@ -5,8 +5,9 @@ import {Store} from '@ngrx/store';
 import {PatientsActions} from '@store/patients/actions';
 import {patientsSelectors} from '@store/patients/selectors';
 import {Patient} from '@entities/patients/model';
-import {PATIENT_TABLE_COLUMNS, PATIENTS_FILTER_PROP} from '@entities/patients/constants';
+import {PATIENT_TABLE_COLUMNS} from '@entities/patients/constants';
 import {Order} from '@entities/orders/model';
+import {PatientProps} from '@entities/patients/enums';
 
 @Component({
 	selector: 'st-patients',
@@ -18,7 +19,7 @@ export class PatientsComponent {
 	patients$: Observable<Patient[]>;
 	loadingStatus$: Observable<LoadingStatus>;
 	columns = PATIENT_TABLE_COLUMNS;
-	filterProp = PATIENTS_FILTER_PROP;
+	filterProp = PatientProps.FullName;
 
 	constructor(private store: Store) {
 		this.reloadData();

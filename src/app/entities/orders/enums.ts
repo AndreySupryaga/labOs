@@ -1,3 +1,9 @@
 export enum OrderProps {
-	Identifier = 'identifier'
+	Identifier = 'identifier',
+	OrderName = 'orderName',
+	CreationDate = 'creationDate',
+	Creator = 'creator',
+	Patient = 'patient',
+	Status = 'status',
+	Favorite = 'favorite'
 }

@@ -1,5 +1,5 @@
-export interface TableColumn<Row = any> {
-	id: string;
+export interface TableColumn<Row = any, Id = string> {
+	id: Id;
 	title: string;
 	width?: number;
 	isStatus?: boolean;
