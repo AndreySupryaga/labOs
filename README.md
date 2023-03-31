@@ -1,3 +1,5 @@
+- # Demo: https://lab-os.vercel.app
+
 - A button on each route: orders, patients should fetch data from a mock API
 
 # Patients: https://api.mocki.io/v2/51597ef3
