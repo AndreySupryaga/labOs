@@ -13,7 +13,6 @@
 
       @media (max-width: map-get($grid-breakpoints, xl)) {
         margin-right: 0;
-
       }
     }
   }
@@ -31,21 +30,6 @@
 
     .item {
       width: 100%;
-      margin-top: $default-offset;
-
-      .item-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        h1 {
-          margin: 0;
-        }
-
-        button {
-          height: 36px;
-        }
-      }
     }
   }
 }

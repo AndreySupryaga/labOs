@@ -1,3 +1,9 @@
+@import 'styles-variables';
+
 .table-component {
   height: calc(100vh - 180px);
+
+  @media (max-width: map-get($grid-breakpoints, xl)) {
+    height: calc(100vh - 150px);
+  }
 }

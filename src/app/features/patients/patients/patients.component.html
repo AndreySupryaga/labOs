@@ -1,14 +1,16 @@
 <div class="container" rtl>
-    <h1 class="main-heading">{{ 'stms.patients.title' | translate }}</h1>
-    <button mat-raised-button color="primary" (click)="reloadData()">
-        {{ 'stms.patients.reload-patients' | translate }}
-    </button>
-    <st-universal-table
-            class="table-component"
-            [loadingStatus]="loadingStatus$ | async"
-            [rows]="patients$ | async"
-            [columns]="columns"
-            [filterProp]="filterProp"
-            (clickOnFavorite)="toggleFavorite($event)"
-    ></st-universal-table>
+    <st-title-with-button-wrapper
+            title="stms.patients.title"
+            buttonText="stms.patients.reload-patients"
+            (clickOnButton)="reloadData()"
+    >
+        <st-universal-table
+                class="table-component"
+                [loadingStatus]="loadingStatus$ | async"
+                [rows]="patients$ | async"
+                [columns]="columns"
+                [filterProp]="filterProp"
+                (clickOnFavorite)="toggleFavorite($event)"
+        ></st-universal-table>
+    </st-title-with-button-wrapper>
 </div>

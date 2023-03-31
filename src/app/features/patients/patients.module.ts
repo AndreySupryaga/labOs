@@ -5,6 +5,7 @@ import {PatientsRoutingModule} from './patients-routing.module';
 import {PatientsComponent} from './patients/patients.component';
 import {UniversalTableModule} from '@shared/components/universal-table/universal-table.module';
 import {PatientsStoreFeatureModule} from '@store/patients';
+import {TitleWithButtonWrapperModule} from '@shared/components/title-with-button-wrapper/title-with-button-wrapper.module';
 
 @NgModule({
 	declarations: [PatientsComponent],
@@ -13,7 +14,8 @@ import {PatientsStoreFeatureModule} from '@store/patients';
 		SharedModule,
 		PatientsRoutingModule,
 		UniversalTableModule,
-		PatientsStoreFeatureModule
+		PatientsStoreFeatureModule,
+		TitleWithButtonWrapperModule
 	],
 	providers: []
 })

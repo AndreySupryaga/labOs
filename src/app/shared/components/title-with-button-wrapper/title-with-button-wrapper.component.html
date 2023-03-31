@@ -1,0 +1,7 @@
+<div class="header">
+    <h1>{{ title | translate }}</h1>
+    <button mat-raised-button color="primary" (click)="clickOnButton.emit()">
+        {{ buttonText | translate }}
+    </button>
+</div>
+<ng-content></ng-content>

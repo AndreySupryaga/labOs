@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {OrdersActions} from '@store/orders/actions';
 import {Observable} from 'rxjs';
@@ -13,19 +13,16 @@ import {ORDER_FILTER_PROP, ORDER_TABLE_COLUMNS} from '@entities/orders/constants
 	styleUrls: ['./orders.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent {
 	orders$: Observable<Order[]>;
 	loadingStatus$: Observable<LoadingStatus>;
 	columns = ORDER_TABLE_COLUMNS;
 	filterProp = ORDER_FILTER_PROP;
 
 	constructor(private store: Store) {
+		this.reloadData();
 		this.orders$ = this.store.select(orderSelectors.ordersWithFavorite.data)
 		this.loadingStatus$ = this.store.select(orderSelectors.ordersWithFavorite.loadingStatus);
-	}
-
-	ngOnInit(): void {
-		this.reloadData()
 	}
 
 	reloadData(): void {

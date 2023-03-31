@@ -5,8 +5,8 @@ import {FavoriteComponent} from './favorite/favorite.component';
 import {FavoriteRoutingModule} from './favorite-routing.module';
 import {OrdersStoreFeatureModule} from '@store/orders';
 import {UniversalTableModule} from '@shared/components/universal-table/universal-table.module';
-import {LoaderModule} from '@shared/components/loader/loader.module';
 import {PatientsStoreFeatureModule} from '@store/patients';
+import {TitleWithButtonWrapperModule} from '@shared/components/title-with-button-wrapper/title-with-button-wrapper.module';
 
 @NgModule({
 	declarations: [FavoriteComponent],
@@ -17,7 +17,7 @@ import {PatientsStoreFeatureModule} from '@store/patients';
 		OrdersStoreFeatureModule,
 		PatientsStoreFeatureModule,
 		UniversalTableModule,
-		LoaderModule
+		TitleWithButtonWrapperModule
 	]
 })
 export class FavoriteModule {}

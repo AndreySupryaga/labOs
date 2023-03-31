@@ -1,36 +1,36 @@
 <div class="container">
     <div rtl class="item">
-        <div class="item-header">
-            <h1 class="main-heading">{{ 'stms.patients.favorite-title' | translate }}</h1>
-            <button mat-raised-button color="primary" (click)="reloadPatientData()">
-                {{ 'stms.patients.reload-patients' | translate }}
-            </button>
-        </div>
-        <st-universal-table
-                class="table-component"
-                [loadingStatus]="patientsLoadingStatus$ | async"
-                [rows]="patients$ | async"
-                [columns]="patientColumns"
-                [filterProp]="patientFilterProp"
-                [showFavoriteCheckbox]="false"
-                (clickOnFavorite)="removeFromFavoritePatient($event)"
-        ></st-universal-table>
+        <st-title-with-button-wrapper
+                title="stms.patients.title"
+                buttonText="stms.patients.reload-patients"
+                (clickOnButton)="reloadPatientData()"
+        >
+            <st-universal-table
+                    class="table-component"
+                    [loadingStatus]="patientsLoadingStatus$ | async"
+                    [rows]="patients$ | async"
+                    [columns]="patientColumns"
+                    [filterProp]="patientFilterProp"
+                    [showFavoriteCheckbox]="false"
+                    (clickOnFavorite)="removeFromFavoritePatient($event)"
+            ></st-universal-table>
+        </st-title-with-button-wrapper>
     </div>
     <div rtl class="item">
-        <div class="item-header">
-            <h1 class="main-heading">{{ 'stms.orders.favorite-title' | translate }}</h1>
-            <button mat-raised-button color="primary" (click)="reloadOrderData()">
-                {{ 'stms.orders.reload-orders' | translate }}
-            </button>
-        </div>
-        <st-universal-table
-                class="table-component"
-                [loadingStatus]="ordersLoadingStatus$ | async"
-                [rows]="orders$ | async"
-                [columns]="orderColumns"
-                [filterProp]="orderFilterProp"
-                [showFavoriteCheckbox]="false"
-                (clickOnFavorite)="removeFromFavoriteOrder($event)"
-        ></st-universal-table>
+        <st-title-with-button-wrapper
+                title="stms.orders.title"
+                buttonText="stms.orders.reload-orders"
+                (clickOnButton)="reloadOrderData()"
+        >
+            <st-universal-table
+                    class="table-component"
+                    [loadingStatus]="ordersLoadingStatus$ | async"
+                    [rows]="orders$ | async"
+                    [columns]="orderColumns"
+                    [filterProp]="orderFilterProp"
+                    [showFavoriteCheckbox]="false"
+                    (clickOnFavorite)="removeFromFavoriteOrder($event)"
+            ></st-universal-table>
+        </st-title-with-button-wrapper>
     </div>
 </div>
