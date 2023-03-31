@@ -16,12 +16,14 @@ import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
 import {MatSort, Sort} from '@angular/material/sort';
 import {defaultSorting} from '@shared/helpers/sorting/sorting.helper';
 import {clone} from 'ramda'
+import {showInAnimations} from '@core/animations/route.animations';
 
 @Component({
 	selector: 'st-universal-table',
 	templateUrl: './universal-table.component.html',
 	styleUrls: ['./universal-table.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	animations: [showInAnimations]
 })
 export class UniversalTableComponent<Row> implements OnChanges {
 	@Input() rows: Row[];
@@ -36,8 +38,8 @@ export class UniversalTableComponent<Row> implements OnChanges {
 
 	sortedRows: Row[];
 	tableHeaderIds = TableHeaderIds;
-	favoriteFlagProperty = FAVORITE_FLAG_PROPERTY;
 	displayedColumns: string[];
+	favoriteFlagProperty = FAVORITE_FLAG_PROPERTY;
 	filterControl = new FormControl('');
 	favoriteCheckboxControl = new FormControl(false);
 
