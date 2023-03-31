@@ -1,6 +1,6 @@
 <ng-container *ngIf="loadingStatus.loaded; else loading">
     <div class="form-container" [@showInAnimations]>
-        <mat-form-field class="search-field">
+        <mat-form-field class="search-field" floatLabel="never">
             <mat-icon matPrefix color="primary">search</mat-icon>
             <input [formControl]="filterControl" matInput placeholder="Search">
         </mat-form-field>

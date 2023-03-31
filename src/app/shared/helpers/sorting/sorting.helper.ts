@@ -18,6 +18,6 @@ export function defaultNumberSorting<Row>(a: Row, b: Row, isAsc: boolean, prop?:
 	return sortComparator(aVal || 0, bVal || 0, isAsc);
 }
 
-function sortComparator(aVal, bVal, isAsc): number {
+export function sortComparator(aVal, bVal, isAsc): number {
 	return aVal === bVal ? 0 : (aVal < bVal ? -1 : 1) * (isAsc ? 1 : -1);
 }

@@ -5,7 +5,7 @@ import {FAVORITE_FLAG_PROPERTY} from '@entities/universal-table/constants';
 	name: 'showOnlyFavorite'
 })
 export class ShowOnlyFavoritePipe implements PipeTransform {
-	transform(items: any[], showFavorite: boolean): any[] {
+	transform<T>(items: T[], showFavorite: boolean): T[] {
 		if (!items || !showFavorite) {
 			return items;
 		}
