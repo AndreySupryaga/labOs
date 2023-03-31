@@ -7,7 +7,8 @@ import {PatientsActions} from '@store/patients/actions';
 import {PatientsApiService} from '@shared/api/patients/patients.api.service';
 import {Patient} from '@entities/patients/model';
 import {patientsSelectors} from '@store/patients/selectors';
-import {EffectsHelper} from '@store/patients/effects.helper';
+import {EffectsHelper} from '@shared/helpers/store/effects.helper';
+import {PatientProps} from '@entities/patients/enums';
 
 @Injectable()
 export class PatientsEffects {
@@ -20,7 +21,7 @@ export class PatientsEffects {
 			])
 		),
 	);
-	
+
 	getPatients$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(PatientsActions.getPatients.requested),
@@ -48,9 +49,9 @@ export class PatientsEffects {
 	toggleFavoritePatient$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(PatientsActions.removeFromFavoritePatient),
-			withLatestFrom(this.store.select(patientsSelectors.favoritePatients.data),),
+			withLatestFrom(this.store.select(patientsSelectors.favoritePatients.data)),
 			concatMap(([{data}, favoritePatients]: [{data: Patient}, Patient[]]) => {
-					const updatedFavoritePatients = EffectsHelper.getUpdatedFavoritePatients(data, favoritePatients);
+					const updatedFavoritePatients = EffectsHelper.getUpdatedFavoriteList(data, favoritePatients, PatientProps.DefaultId);
 					return this.apiService.updateFavoritePatients(updatedFavoritePatients).pipe(
 						map((data: Patient[]) => PatientsActions.updateFavoritePatients({data}))
 					)
@@ -64,10 +65,10 @@ export class PatientsEffects {
 			ofType(PatientsActions.toggleFavoritePatient),
 			withLatestFrom(
 				this.store.select(patientsSelectors.patients.data),
-				this.store.select(patientsSelectors.favoritePatients.data),
+				this.store.select(patientsSelectors.favoritePatients.data)
 			),
 			concatMap(([{data}, patients, favoritePatients]: [{data: Patient}, Patient[], Patient[]]) => {
-					const updatedFavoritePatients = EffectsHelper.getUpdatedFavoritePatients(data, favoritePatients, patients);
+					const updatedFavoritePatients = EffectsHelper.getUpdatedFavoriteList(data, favoritePatients, PatientProps.DefaultId, patients);
 					return this.apiService.updateFavoritePatients(updatedFavoritePatients).pipe(
 						map((data: Patient[]) => PatientsActions.updateFavoritePatients({data}))
 					)

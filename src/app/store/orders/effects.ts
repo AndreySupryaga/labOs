@@ -7,7 +7,8 @@ import {OrdersActions} from '@store/orders/actions';
 import {OrdersApiService} from '@shared/api/orders/orders.api.service';
 import {Order} from '@entities/orders/model';
 import {orderSelectors} from '@store/orders/selectors';
-import {EffectsHelper} from '@store/orders/effects.helper';
+import {EffectsHelper} from '@shared/helpers/store/effects.helper';
+import {OrderProps} from '@entities/orders/enums';
 
 @Injectable()
 export class OrdersEffects {
@@ -50,10 +51,10 @@ export class OrdersEffects {
 			ofType(OrdersActions.toggleFavoriteOrder),
 			withLatestFrom(
 				this.store.select(orderSelectors.orders.data),
-				this.store.select(orderSelectors.favoriteOrders.data),
+				this.store.select(orderSelectors.favoriteOrders.data)
 			),
 			concatMap(([{data}, orders, favoriteOrders]: [{data: Order}, Order[], Order[]]) => {
-					const updatedFavoriteOrders = EffectsHelper.getUpdatedFavoriteOrders(data, favoriteOrders, orders);
+					const updatedFavoriteOrders = EffectsHelper.getUpdatedFavoriteList(data, favoriteOrders, OrderProps.Identifier, orders);
 					return this.apiService.updateFavoriteOrders(updatedFavoriteOrders).pipe(
 						map((data: Order[]) => OrdersActions.updateFavoriteOrders({data}))
 					)
@@ -65,11 +66,9 @@ export class OrdersEffects {
 	removeFromFavoriteOrder$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(OrdersActions.removeFromFavoriteOrder),
-			withLatestFrom(
-				this.store.select(orderSelectors.favoriteOrders.data),
-			),
+			withLatestFrom(this.store.select(orderSelectors.favoriteOrders.data)),
 			concatMap(([{data}, favoriteOrders]: [{data: Order}, Order[]]) => {
-					const updatedFavoriteOrders = EffectsHelper.getUpdatedFavoriteOrders(data, favoriteOrders);
+					const updatedFavoriteOrders = EffectsHelper.getUpdatedFavoriteList(data, favoriteOrders, OrderProps.Identifier);
 					return this.apiService.updateFavoriteOrders(updatedFavoriteOrders).pipe(
 						map((data: Order[]) => OrdersActions.updateFavoriteOrders({data}))
 					)
