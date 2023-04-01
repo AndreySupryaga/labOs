@@ -61,18 +61,12 @@ const STEPS_ALL: any[] = [
 ];
 
 const SHOW_IN_ANIMATIONS = [
-	query(':enter > *', style({opacity: 0, position: 'fixed'}), {
-		optional: true
-	}),
-	query(':enter .' + ROUTE_ANIMATIONS_ELEMENTS, style({opacity: 0}), {
-		optional: true
-	}),
 	sequence([
 		query(
 			':enter > *',
 			[
 				style({
-					transform: 'translateY(-3%)',
+					transform: 'translateY(-1%)',
 					opacity: 0,
 					position: 'static'
 				}),
